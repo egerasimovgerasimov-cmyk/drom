@@ -105,31 +105,3 @@ The console is switched to UTF-8 (`65001`) and the project is compiled with
 originally saved in Windows-1251; they were converted to UTF-8 so that GitHub
 shows them correctly.
 
-## A note on `Harakter.h`
-
-The copy of this project that survived on my USB stick had a corrupted
-`Harakter.h` — the file was no longer text. It was rebuilt from the project
-documentation (the "Характеристики" screen description) and matches the data
-format and the output of the original compiled `DR.exe`.
-
-## What I would do differently today
-
-This is student code, and it shows. Kept as is on purpose — rewriting it into a
-"perfect" project would lose the point of the exercise — but the weak spots are
-worth naming:
-
-- **Passwords are stored in plain text.** Today: salted hashes, never the
-  password itself.
-- **Lines are parsed by counting separators.** A missing `;` shifts every field.
-  Today: a small parser with validation and clear error messages.
-- **The account screen prints the password back to the user.** Today: never.
-- **Logic lives in headers.** Fine for a coursework of six files, wrong for
-  anything bigger: `.h` + `.cpp` pairs and a namespace.
-- **No tests.** The parsing functions are pure and easy to unit-test.
-- **Data is read into memory on every screen.** A tiny repository class would
-  remove the duplication between `autoriz.h`, `regist.h`, `obiav.h` and
-  `kabin.h`.
-
-## License
-
-MIT — see [LICENSE](LICENSE).
